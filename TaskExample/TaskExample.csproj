@@ -44,9 +44,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FileQueue.cs" />
+    <Compile Include="ITaskWrapper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ThreadObject.cs" />
+    <Compile Include="FileObject.cs" />
+    <Compile Include="TaskWrapper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

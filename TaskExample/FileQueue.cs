@@ -12,22 +12,29 @@ namespace TaskExample
     public class FileQueue
     {
         // thread-safe queue to enqueue task
-        static ConcurrentQueue<Task> _queue;
+        public ConcurrentQueue<Task> _queue;
 
-        static FileQueue()
+        public FileQueue()
         {
             _queue = new ConcurrentQueue<Task>();
         }
 
         // Enqueue Task in queue
-        public static void Enqueue(Action action, CancellationToken cancelToken = default(CancellationToken))
+        public void Enqueue(Action action)
         {
-            Task task = new Task(action, cancelToken);
-            _queue.Enqueue(task);
-        }
+			try
+			{
+				Task task = new Task(action);
+				_queue.Enqueue(task);
+			}
+			catch (Exception ex)
+			{
+				Debug.WriteLine(ex.Message);
+			}
+		}
 
         // Dequeue task from queue
-        public static void Dequeue()
+        public void Dequeue()
         {
             while (true)
             {
@@ -36,9 +43,17 @@ namespace TaskExample
                     Task task;
                     if (_queue.TryDequeue(out task))
                     {
-                        task.RunSynchronously();
-
-                    }
+						if (task != null)
+						{
+							//Run the dequeued task on separate thread
+							var t = Task.Factory.StartNew(() => task.Start());
+							t.Wait();
+						}
+						else
+						{
+							return;
+						}
+					}
                 }
                 catch (Exception ex)
                 {

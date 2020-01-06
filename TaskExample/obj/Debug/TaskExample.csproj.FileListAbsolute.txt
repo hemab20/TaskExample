@@ -9,3 +9,4 @@ C:\Projects\TaskExample\TaskExample\bin\Debug\TaskExample.exe
 C:\Projects\TaskExample\TaskExample\bin\Debug\TaskExample.pdb
 C:\Projects\TaskExample\TaskExample\obj\Debug\TaskExample.exe
 C:\Projects\TaskExample\TaskExample\obj\Debug\TaskExample.pdb
+C:\Projects\TaskExample\TaskExample\obj\Debug\TaskExample.csprojAssemblyReference.cache
