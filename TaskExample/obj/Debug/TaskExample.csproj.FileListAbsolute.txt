@@ -1,0 +1,11 @@
+C:\Users\saurabh.bhutada\source\repos\TaskExample\TaskExample\bin\Debug\TaskExample.exe.config
+C:\Users\saurabh.bhutada\source\repos\TaskExample\TaskExample\bin\Debug\TaskExample.exe
+C:\Users\saurabh.bhutada\source\repos\TaskExample\TaskExample\bin\Debug\TaskExample.pdb
+C:\Users\saurabh.bhutada\source\repos\TaskExample\TaskExample\obj\Debug\TaskExample.csprojAssemblyReference.cache
+C:\Users\saurabh.bhutada\source\repos\TaskExample\TaskExample\obj\Debug\TaskExample.exe
+C:\Users\saurabh.bhutada\source\repos\TaskExample\TaskExample\obj\Debug\TaskExample.pdb
+C:\Projects\TaskExample\TaskExample\bin\Debug\TaskExample.exe.config
+C:\Projects\TaskExample\TaskExample\bin\Debug\TaskExample.exe
+C:\Projects\TaskExample\TaskExample\bin\Debug\TaskExample.pdb
+C:\Projects\TaskExample\TaskExample\obj\Debug\TaskExample.exe
+C:\Projects\TaskExample\TaskExample\obj\Debug\TaskExample.pdb
