@@ -1,31 +1,36 @@
-﻿using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-
-namespace TaskExample
+﻿namespace TaskExample
 {
-    public class FileQueue
+	using System;
+	using System.Collections.Concurrent;
+	using System.Collections.Generic;
+	using System.Diagnostics;
+	using System.Linq;
+	using System.Text;
+	using System.Threading;
+	using System.Threading.Tasks;
+
+	public class FileQueue
     {
         // thread-safe queue to enqueue task
-        public ConcurrentQueue<Task> _queue;
+        private ConcurrentQueue<Task> _queue;
 
         public FileQueue()
         {
-            _queue = new ConcurrentQueue<Task>();
+            this._queue = new ConcurrentQueue<Task>();
         }
+
+		public ConcurrentQueue<Task> CurrentQueue
+		{
+			get { return this._queue; }
+		}
 
         // Enqueue Task in queue
         public void Enqueue(Action action)
         {
 			try
 			{
-				Task task = new Task(action);
-				_queue.Enqueue(task);
+				var task = new Task(action);
+				this._queue.Enqueue(task);
 			}
 			catch (Exception ex)
 			{
@@ -47,12 +52,17 @@ namespace TaskExample
 						{
 							//Run the dequeued task on separate thread
 							var t = Task.Factory.StartNew(() => task.Start());
+							Thread.Sleep(2000);
 							t.Wait();
 						}
 						else
 						{
-							return;
+							break;
 						}
+					}
+					else
+					{
+						break;
 					}
                 }
                 catch (Exception ex)

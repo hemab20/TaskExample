@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TaskExample
+﻿namespace TaskExample
 {
 	public interface ITaskWrapper
 	{
 		void ExecuteTasks();
+		void ReadFiles(FileObject queue);
+		void EnqueueTasks(string dirPath);
+		void DequeueTasks();
 	}
 }

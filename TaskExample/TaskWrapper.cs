@@ -1,15 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TaskExample
+﻿namespace TaskExample
 {
+	using System;
+	using System.IO;
+	using System.Configuration;
+	using System.Threading.Tasks;
+
 	public class TaskWrapper : ITaskWrapper
 	{
-		FileQueue fileQueue = new FileQueue();
+		private FileQueue fileQueue ;
+
+		public TaskWrapper()
+		{
+			this.fileQueue = new FileQueue();
+		}
 		public void ExecuteTasks()
 		{
 			Console.WriteLine("Enter directory path to read files");
@@ -21,10 +24,11 @@ namespace TaskExample
 			Task.WaitAll(t1, t2);
 		}
 
-		public static void ReadFiles(FileObject queue)
+		public void ReadFiles(FileObject queue)
 		{
-			//var fileStream =  File.ReadAllText(queue.FilePath);
-			//Simulate the file read operation
+			var filestream = File.ReadAllText(queue.FilePath);
+
+			// Simulate the file read operation
 			Console.WriteLine("Dequeued File Read Task Completed. File Name " + queue.FileName);
 		}
 
@@ -43,20 +47,17 @@ namespace TaskExample
 						FilePath = Path.GetFullPath(files[i]),
 					};
 
-					fileQueue.Enqueue(() => { ReadFiles(queue); });
+					this.fileQueue.Enqueue(() => { ReadFiles(queue); });
 
-					Console.WriteLine
-						(
-						"Enqueued: " + queue.FileID +
-						"\t" + "File Name: " + queue.FileName 
-						);
+					Console.WriteLine("Enqueued: " + queue.FileID + "\t" + "File Name: " + queue.FileName);
 				}
 			}
 		}
 
 		public void DequeueTasks()
 		{
-			fileQueue.Dequeue();
+			this.fileQueue.Dequeue();
 		}
+
 	}
 }
