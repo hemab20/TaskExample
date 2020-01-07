@@ -52,7 +52,7 @@
 						{
 							//Run the dequeued task on separate thread
 							var t = Task.Factory.StartNew(() => task.Start());
-							Thread.Sleep(2000);
+							Thread.Sleep(200);
 							t.Wait();
 						}
 						else
