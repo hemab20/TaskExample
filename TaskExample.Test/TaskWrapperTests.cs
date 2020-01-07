@@ -5,13 +5,10 @@
 	using System.Threading.Tasks;
 	using Shouldly;
 	using System.Diagnostics;
-	using System.IO;
-	using System.Configuration;
 
 	[TestClass]
 	public class TaskWrapperTests
-	{
-		
+	{		
 		[TestMethod]
 		public void Ctor_AlwaysReturns_ValidInstance()
 		{
